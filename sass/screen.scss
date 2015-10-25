@@ -3,4 +3,36 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
+//@import "compass/reset";
+@import "compass/css3";
+@import "bootstrap/bootstrap";
+@import "components/variables";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Source Sans Pro", helvetica, arial, sans-serif;
+  font-weight: 400;
+  color: $bldgray;
+}
+
+.screen {
+  background: $cream;
+  border: 10px solid #FFFFFF;
+  @include box-sizing(border-box);
+  height: 100%;
+}
+
+.logoLg {
+  width: 70%;
+  max-width: 400px;
+  position: relative;
+  top: 50%;
+  @include transform(translateY(-70%));
+}
+
+h1 {
+  font-weight: 900;
+}
