@@ -14,7 +14,14 @@
   background: rgba(0,0,0,0.1);
   border: 1px solid rgba(0,0,0,0.1);
   @include border-radius(50px);
+  z-index: 100;
   @media (max-width: $screen-sm) {
     display: none;
+  }
+  img {
+    @include transition-duration(.3s);
+    &:hover {
+      @include box-shadow(rgba(0,0,0,0.5) 0px 0px 2px);
+    }
   }
 }
