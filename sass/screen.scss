@@ -7,32 +7,19 @@
 @import "compass/css3";
 @import "bootstrap/bootstrap";
 @import "components/variables";
+@import "components/images";
+@import "components/typography";
+@import "components/helpers";
+@import "components/positioning";
 
 html, body {
   height: 100%;
 }
 
-body {
-  font-family: "Source Sans Pro", helvetica, arial, sans-serif;
-  font-weight: 400;
-  color: $bldgray;
-}
-
 .screen {
   background: $cream;
-  border: 10px solid #FFFFFF;
+  border: 20px solid #FFFFFF;
+  @include border-radius(30px);
   @include box-sizing(border-box);
-  height: 100%;
-}
-
-.logoLg {
-  width: 70%;
-  max-width: 300px;
-  position: relative;
-  top: 50%;
-  @include transform(translateY(-70%));
-}
-
-h1 {
-  font-weight: 900;
+  min-height: 100%;
 }
