@@ -1,0 +1,17 @@
+// Positioning Elements
+// –––––––––––––––––––––––––––––––––––––––
+.verticalAlign {
+  position: relative;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+#weAre {
+  width: 60px;
+  position: absolute;
+  top: $baseFontSize/2;
+  left: $baseFontSize/2;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.1);
+  @include border-radius(50px);
+}
