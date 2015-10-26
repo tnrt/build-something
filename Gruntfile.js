@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     },
     watch: {
       css: {
-        files: ['sass/*.scss'],
+        files: ['sass/**'],
         tasks: ['compass'],
         options: {
           spawn: false
