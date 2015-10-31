@@ -74,29 +74,34 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-7 col-md-offset-1">
-          <div class="panel panel-default">
-            <div class="panel-body" style="position: relative;">
-              <a href="https://blab.im/meghan-nesta-build-something-reliving-the-magic-from-ascendsummit" target="_blank" style="width: 80%;">
-                Build Something: Reliving the magic from #ASCENDSUMMIT
-              </a>
+      <!-- Handlebars Wrapper -->
+      <div id="archives">
+        <script class="row" id="RecentPosts" type="text/x-handlebars-template">
+          <div class="col-md-7 col-md-offset-1">
+            <div class="panel panel-default">
+              <div class="panel-body" style="position: relative;">
+                <a href="{{cells.Link}}" target="_blank" style="width: 80%;">
+                  {{cells.Title}}
+                </a>
 
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="position: absolute; top: 15px; right: 10px;">
-                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-              </a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{cells.Slug}}" aria-expanded="true" aria-controls="collapseOne" style="position: absolute; top: 15px; right: 10px;">
+                  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </a>
 
-              <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" style="margin-top: 15px;">
-                Meghan, Tom, and Chris discuss some of the best insights from AWeber's ASCEND summit. Mike Smith drops by and drops some knowledge on showing up and sticking with it.
+                <div id="{{cells.Slug}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" style="margin-top: 15px;">
+                  {{cells.Notes}}
+                </div>
               </div>
-            </div>
 
-            <div class="panel-footer pv0">
-              <small>October 23, 2015</small>
+              <div class="panel-footer pv0">
+                <small>{{cells.Date}}</small>
+              </div>
             </div>
           </div>
         </div>
+        </script>
       </div>
+      <!-- End Handlebars Wrapper -->
 
     </div>
   </div>
@@ -105,8 +110,27 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/sheetrock.min.js"></script>
+  <!-- Load Handlebars.js from CloudFlare’s CDN. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
 
   <script>
+  $(document).ready(function(){
+    //var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1qT1LyvoAcb0HTsi2rHBltBVpUBumAUzT__rhMvrz5Rk/edit#gid=0';
+    var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/16jVD7G_Eqsi_ZsHXlwDWZPBhR3XBRQQoAtK-xJLkfSI/edit#gid=0';
+
+    // Compile the Handlebars template for HR leaders.
+    var RecentPosts = Handlebars.compile($('#RecentPosts').html());
+
+    // Load top five HR leaders.
+    $('#archives').sheetrock({
+      url: mySpreadsheet,
+      query: "select A,B,C,D,E order by A desc",
+      fetchSize: 10,
+      rowTemplate: RecentPosts
+    });
+  })
+
   // Google Analytics
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
