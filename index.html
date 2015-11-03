@@ -32,39 +32,41 @@
       </a>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 text-center">
           <img src="img/logo.png" alt="Build Something" class="logoLg ptxl" />
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-7 col-md-offset-1">
-          <h2>On the next episode...</h2>
-          <div id="nextEpisode" class="embed-responsive embed-responsive-16by9">
-            <iframe style='max-width: 100%;' src='{{cells.Link}}' frameborder='0' height='480' scrolling='none' width='640' class="embed-responsive-item"></iframe>
+      <div id="nextEpisode">
+        <script id="nextEpisodeBlock" type="text/x-handlebars-template" class="row">
+          <div class="col-md-7 col-md-offset-1">
+            <h2>On the next episode...</h2>
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe style='max-width: 100%;' src='{{cells.Link}}' frameborder='0' height='480' scrolling='none' width='640' class="embed-responsive-item"></iframe>
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-3 mtm">
-          <p>
-            <br>
-            <strong>Weekly recommendations</strong>
-          </p>
-          <p>
-            <a href="https://twitter.com/mjnesta" target="_blank">Meghan</a> recommended <em><a href="http://www.twitter.com">Twitter</a></em>.
-          </p>
-          <p>
-            <a href="https://twitter.com/tnrt" target="_blank">Tom</a> recommended <em><a href="http://www.blab.im">Blab</a></em>.
-          </p>
-          <p>
-            <a href="https://twitter.com/clickpop" target="_blank">Chris</a> recommended <em><a href="https://www.lostmy.name/en-US/books/thejourneyhome">The Incredible Intergalactic Journey Home</a></em>.
-          </p>
-          <p>
-            <strong>Enjoy!</strong>
-          </p>
-        </div>
+          <div class="col-md-3 mtm">
+            <p>
+              <br>
+              <strong>Weekly recommendations</strong>
+            </p>
+            <p>
+              <a href="https://twitter.com/mjnesta" target="_blank">Meghan</a> recommended <em><a href="http://www.twitter.com">Twitter</a></em>.
+            </p>
+            <p>
+              <a href="https://twitter.com/tnrt" target="_blank">Tom</a> recommended <em><a href="http://www.blab.im">Blab</a></em>.
+            </p>
+            <p>
+              <a href="https://twitter.com/clickpop" target="_blank">Chris</a> recommended <em><a href="https://www.lostmy.name/en-US/books/thejourneyhome">The Incredible Intergalactic Journey Home</a></em>.
+            </p>
+            <p>
+              <strong>Enjoy!</strong>
+            </p>
+          </div>
+        </script>
       </div>
 
       <!-- Archives -->
@@ -98,7 +100,6 @@
               </div>
             </div>
           </div>
-        </div>
         </script>
       </div>
       <!-- End Handlebars Wrapper -->
@@ -121,13 +122,13 @@
 
     // Compile the Handlebars template for HR leaders.
     var archivePosts = Handlebars.compile($('#archivePosts').html());
-    var nextEpisode = Handlebars.compile($('#nextEpisode').html());
+    var nextEpisode = Handlebars.compile($('#nextEpisodeBlock').html());
 
     // Load Featured
     $('#nextEpisode').sheetrock({
       url: nextEpisodeSheet,
-      query: "select A,B",
-      fetchSize: 5,
+      query: "select A,B order by A desc",
+      fetchSize: 1,
       rowTemplate: nextEpisode
     });
 
