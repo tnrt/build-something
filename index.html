@@ -42,8 +42,8 @@
       <div class="row">
         <div class="col-md-7 col-md-offset-1">
           <h2>On the next episode...</h2>
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe style='max-width: 100%;' src='https://blab.im/buildshowco-build-something-new-how-to-start' frameborder='0' height='480' scrolling='none' width='640' class="embed-responsive-item"></iframe>
+          <div id="nextEpisode" class="embed-responsive embed-responsive-16by9">
+            <iframe style='max-width: 100%;' src='{{cells.Link}}' frameborder='0' height='480' scrolling='none' width='640' class="embed-responsive-item"></iframe>
           </div>
         </div>
 
@@ -76,7 +76,7 @@
 
       <!-- Handlebars Wrapper -->
       <div id="archives">
-        <script class="row" id="RecentPosts" type="text/x-handlebars-template">
+        <script class="row" id="archivePosts" type="text/x-handlebars-template">
           <div class="col-md-7 col-md-offset-1">
             <div class="panel panel-default">
               <div class="panel-body" style="position: relative;">
@@ -116,18 +116,27 @@
 
   <script>
   $(document).ready(function(){
-    //var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1qT1LyvoAcb0HTsi2rHBltBVpUBumAUzT__rhMvrz5Rk/edit#gid=0';
-    var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/16jVD7G_Eqsi_ZsHXlwDWZPBhR3XBRQQoAtK-xJLkfSI/edit#gid=0';
+    var archiveSheet = 'https://docs.google.com/spreadsheets/d/16jVD7G_Eqsi_ZsHXlwDWZPBhR3XBRQQoAtK-xJLkfSI/edit#gid=0';
+    var nextEpisodeSheet = 'https://docs.google.com/spreadsheets/d/16jVD7G_Eqsi_ZsHXlwDWZPBhR3XBRQQoAtK-xJLkfSI/pubhtml?gid=1768517291';
 
     // Compile the Handlebars template for HR leaders.
-    var RecentPosts = Handlebars.compile($('#RecentPosts').html());
+    var archivePosts = Handlebars.compile($('#archivePosts').html());
+    var nextEpisode = Handlebars.compile($('#nextEpisode').html());
 
-    // Load top five HR leaders.
+    // Load Featured
+    $('#nextEpisode').sheetrock({
+      url: nextEpisodeSheet,
+      query: "select A,B",
+      fetchSize: 5,
+      rowTemplate: nextEpisode
+    });
+
+    // Load last 10 episodes
     $('#archives').sheetrock({
-      url: mySpreadsheet,
+      url: archiveSheet,
       query: "select A,B,C,D,E order by A desc",
       fetchSize: 10,
-      rowTemplate: RecentPosts
+      rowTemplate: archivePosts
     });
   })
 
