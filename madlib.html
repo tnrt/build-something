@@ -26,11 +26,12 @@
           <img src="img/watermark.png" id="logo" style="display: none;"/>
           <canvas id="testCanvas" height="440" width="880" style="display:none;"></canvas>
           <div id="madlibForm">
-            <p>In order to <input id="vision"></input>, (the vision)</p>
-            <p>our product will solve <input id="audience"></input> (target audience)</p>
-            <p>problem of <input id="problem"></input>, (user problem)</p>
-            <p>by giving them <input id="strategy"></input>, (strategy)</p>
-            <p>We will know if our product works when we see <input id="goal"></input>, (goal)</p>
+            <p>In order to <input id="vision" style="width:300px;" placeholder="enable makers to make greater things"></input>, (the vision)</p>
+            <p>our product will solve <input id="audience" style="width: 225px;" placeholder="inventors and entrepreneurs"></input> (target audience)</p>
+            <p>problem of <input id="problem" style="width: 296px;" placeholder="lacking support &amp; resources"></input>, (user problem)</p>
+            <p>by giving them <input id="strategy" style="width: 270px;" placeholder="access to &amp; insights from other makers"></input>. (strategy)</p>
+            <p>We will know if our product works when we see<br>
+              <input id="goal" style="width: 370px;" placeholder="makers building wonderful things together"></input>. (goal)</p>
             <p><a href="#" class="btn btn-default" id="build">Build</a></p>
           </div>
           <div id="madlib" style="display:none;">
@@ -97,7 +98,7 @@
     var maxWidth = 820;
     var x = (can.width - maxWidth) / 2;
     var y = 60;
-    var lineHeight = 40;
+    var lineHeight = 25;
 
     var theVision = 'In order to ' + vision + ',';
     var theAudience = 'our product will solve ' + audience;
@@ -121,10 +122,10 @@
     **/
 
     wrapText(ctx, theVision, x, y, maxWidth, lineHeight);
-    wrapText(ctx, theAudience, x, 110, maxWidth, lineHeight);
-    wrapText(ctx, theProblem, x, 160, maxWidth, lineHeight);
-    wrapText(ctx, theStrategy, x, 210, maxWidth, lineHeight);
-    wrapText(ctx, theGoal, x, 260, maxWidth, lineHeight);
+    wrapText(ctx, theAudience, x, 120, maxWidth, lineHeight);
+    wrapText(ctx, theProblem, x, 180, maxWidth, lineHeight);
+    wrapText(ctx, theStrategy, x, 240, maxWidth, lineHeight);
+    wrapText(ctx, theGoal, x, 300, maxWidth, lineHeight);
 
     var img = new Image();
     img.src = can.toDataURL();
