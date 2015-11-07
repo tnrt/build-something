@@ -54,7 +54,7 @@ function buildMadlib(vision, audience, problem, strategy, goal) {
   var theVision = 'In order to ' + vision + ',',
       theAudience = 'our product will solve ' + audience,
       theProblem = 'problem of ' + problem,
-      theStrategy = 'by giving them' + strategy + '.',
+      theStrategy = 'by giving them ' + strategy + '.',
       theGoal = 'We will know if our product works when we see ' + goal + '.',
       logo = document.getElementById("logo");
 
