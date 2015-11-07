@@ -24,6 +24,15 @@ html, body {
   min-height: 100%;
 }
 
+#madlib {
+  display: none;
+}
+
+#madlib img {
+  border: 3px solid white;
+  margin-top: 12px;
+}
+
 @media screen and (max-width: $screen-sm) {
   #madlibForm {
     input {

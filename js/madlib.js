@@ -9,8 +9,9 @@ $(document).ready(function(){
     buildMadlib(vision, audience, problem, strategy, goal);
   });
   $("#rebuild").click(function(){
-    $("#madlibForm").show();
-    $("#madlib").hide();
+    $('#madlib').fadeOut(100, function(){
+      $('#madlibForm').fadeIn(200);
+    });
   });
 });
 
@@ -81,6 +82,8 @@ function buildMadlib(vision, audience, problem, strategy, goal) {
 
   $('#madlib img').attr('src', img.src);
   $("#saveMadlib").attr('href', img.src);
-  $('#madlib').show();
-  $('#madlibForm').hide();
+  $('#madlibForm').fadeOut(100, function(){
+    $('#madlib').fadeIn(200);
+  });
+
 }

@@ -21,12 +21,12 @@
 <body>
 
   <div class="screen">
-    <div class="container-fluid mtl">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
           <img src="img/watermark.png" id="logo" style="display: none;"/>
           <canvas id="testCanvas" height="440" width="880" style="display:none;"></canvas>
-          <div id="madlibForm">
+          <div id="madlibForm" class="mtm">
             <p>In order to <input id="vision" style="width:300px;" placeholder="enable makers to make greater things"></input>, <span class="description">(the vision)</span></p>
             <p>our product will solve <input id="audience" style="width: 225px;" placeholder="inventors and entrepreneurs"></input> <span class="description">(target audience)</span></p>
             <p>problem of <input id="problem" style="width: 296px;" placeholder="lacking support &amp; resources"></input>, <span class="description">(user problem)</span></p>
@@ -35,15 +35,16 @@
               <input id="goal" style="width: 370px;" placeholder="makers building wonderful things together"></input>. <span class="description">(goal)</span></p>
             <p><a href="#" class="btn btn-default" id="build">Build</a></p>
           </div>
-          <div id="madlib" style="display:none;">
-            <img width="600" style="max-width: 100%;"><br>
+          <div id="madlib">
+            <p class="mtm"><strong>That's an inspiring product vision, why not share it?</strong></p>
             <a href="#" class="btn btn-default" id="rebuild">Rebuild</a>
-            <a href="" type="button" class="btn btn-default" id="saveMadlib" download="madlib.png">Save</a>
+            <a href="" type="button" class="btn btn-default" id="saveMadlib" download="madlib.png">Save</a><br>
+            <img width="600" style="max-width: 100%;"><br>
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mbl">
         <div class="col-sm-12 mtl">
           Inspired by the brilliant <a href="https://medium.com/@jaf_designer/why-product-thinking-is-the-next-big-thing-in-ux-design-ee7de959f3fe#.dtttirmrg" target="_blank">Nikkel Blaase</a>
         </div>
