@@ -23,3 +23,16 @@ html, body {
   @include box-sizing(border-box);
   min-height: 100%;
 }
+
+@media screen and (max-width: $screen-sm) {
+  #madlibForm {
+    input {
+      display: inline-block;
+      min-width: 95%;
+      max-width: 95%;
+    }
+    .description {
+      display: none;
+    }
+  }
+}
