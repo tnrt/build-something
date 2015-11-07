@@ -99,34 +99,31 @@
   }
 
   function buildMadlib(vision, audience, problem, strategy, goal) {
-    var can = document.getElementById('testCanvas');
-    var ctx = can.getContext('2d');
+    var can = document.getElementById('testCanvas'),
+        ctx = can.getContext('2d');
 
-    var maxWidth = 820;
-    var x = (can.width - maxWidth) / 2;
-    var y = 60;
-    var lineHeight = 25;
-
-    var theVision = 'In order to ' + vision + ',';
-    var theAudience = 'our product will solve ' + audience;
-    var theProblem = 'problem of ' + problem;
-    var theStrategy = 'by giving them' + strategy + '.';
-    var theGoal = 'We will know if our product works when we see ' + goal + '.';
-    var logo = document.getElementById("logo");
+    // Variables for text wrap
+    var maxWidth = 820,
+        x = (can.width - maxWidth) / 2,
+        y = 60,
+        lineHeight = 25;
 
     ctx.fillStyle = '#F9F7ED';
     ctx.fillRect(0,0,880,440);
-    ctx.drawImage(logo,740,340,100,55);
 
-    ctx.font = "normal 24px Arial";
+    // Add Logo
+    // ctx.drawImage(logo,740,340,100,55);
+
+    // Build statement
+    var theVision = 'In order to ' + vision + ',',
+        theAudience = 'our product will solve ' + audience,
+        theProblem = 'problem of ' + problem,
+        theStrategy = 'by giving them' + strategy + '.',
+        theGoal = 'We will know if our product works when we see ' + goal + '.',
+        logo = document.getElementById("logo");
+
+    ctx.font = "normal 24px Georgia";
     ctx.fillStyle = '#7A7A7A';
-    /** Legacy text creation
-    ctx.fillText('In order to ' + theVision + ",", 10, 30);
-    ctx.fillText('our product will solve ' + theAudience, 10, 60);
-    ctx.fillText('problem of ' + theProblem + ",", 10, 90);
-    ctx.fillText('by giving them ' + theStrategy + ",", 10, 120);
-    ctx.fillText('We will know if our product works when we see ' + theGoal + ",", 10, 150);
-    **/
 
     wrapText(ctx, theVision, x, y, maxWidth, lineHeight);
     wrapText(ctx, theAudience, x, 120, maxWidth, lineHeight);
@@ -134,9 +131,17 @@
     wrapText(ctx, theStrategy, x, 240, maxWidth, lineHeight);
     wrapText(ctx, theGoal, x, 300, maxWidth, lineHeight);
 
+    // Powered by
+    var textString = "♥ buildshow.co",
+        textWidth = ctx.measureText(textString).width;
+
+    ctx.fillStyle =  '#8a8a8a';
+    ctx.font = "normal 18px Arial";
+    ctx.fillText(textString, (can.width / 2) - (textWidth / 2.5), 390);
+
     var img = new Image();
     img.src = can.toDataURL();
-    //document.body.appendChild(img);
+
     $('#madlib img').attr('src', img.src);
     $("#saveMadlib").attr('href', img.src);
     $('#madlib').show();
