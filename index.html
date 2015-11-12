@@ -55,13 +55,13 @@
               <strong>Weekly recommendations</strong>
             </p>
             <p>
-              <a href="https://twitter.com/mjnesta" target="_blank">Meghan</a> recommended <em><a href="http://www.twitter.com">Twitter</a></em>.
+              <a href="https://twitter.com/mjnesta" target="_blank">Meghan</a> recommended <em><a href="{{cells.MNRecLink}}">{{cells.MNRecTitle}}</a></em>.
             </p>
             <p>
-              <a href="https://twitter.com/tnrt" target="_blank">Tom</a> recommended <em><a href="http://www.blab.im">Blab</a></em>.
+              <a href="https://twitter.com/tnrt" target="_blank">Tom</a> recommended <em><a href="{{cells.TTRecLink}}">{{cells.TTRecTitle}}</a></em>.
             </p>
             <p>
-              <a href="https://twitter.com/clickpop" target="_blank">Chris</a> recommended <em><a href="https://www.lostmy.name/en-US/books/thejourneyhome">The Incredible Intergalactic Journey Home</a></em>.
+              <a href="https://twitter.com/clickpop" target="_blank">Chris</a> recommended <em><a href="{{ cells.CVRecLink }}">{{cells.CVRecTitle}}</a></em>.
             </p>
             <p>
               <strong>Enjoy!</strong>
@@ -128,7 +128,7 @@
     // Load Featured
     $('#nextEpisode').sheetrock({
       url: nextEpisodeSheet,
-      query: "select A,B order by A desc",
+      query: "select A,B, C, D, E, F, G, H order by A desc",
       fetchSize: 1,
       rowTemplate: nextEpisode
     });
